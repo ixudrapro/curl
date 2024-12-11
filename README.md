@@ -35,7 +35,7 @@ Pull this package in through Composer.
 
     {
         "require": {
-            "ixudra/curl": "6.*"
+            "ixudra/curl": "1.*"
         }
     }
 
