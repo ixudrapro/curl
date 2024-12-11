@@ -27,7 +27,9 @@ class CurlServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        app(Builder::class)->enableStart();
+        if (!$this->app->runningInConsole()) {
+            app(Builder::class)->enableStart();
+        }
     }
 
     /**

@@ -35,14 +35,14 @@ Pull this package in through Composer.
 
     {
         "require": {
-            "ixudra/curl": "1.*"
+            "ixudrapro/curl": "1.*"
         }
     }
 
 ```
 
 or run in terminal:
-`composer require ixudra/curl`
+`composer require ixudrapro/curl`
 
 ### Laravel 5.5+ Integration
 
